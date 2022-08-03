@@ -1,0 +1,41 @@
+<div class="m-0">
+  <h3 style="text-align: center">Please login with any email and password</h3>
+</div>
+<div class="login">
+  <h2 class="login-header">Login Here</h2>
+  <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+    <input type="email" placeholder="Email" formControlName="email" />
+
+    <span
+      class="text-danger"
+      *ngIf="
+        (formControls.email.touched || isSubmitted) &&
+        formControls.email.errors?.required
+      "
+    >
+      Email is required
+    </span>
+
+    <span
+      class="text-danger"
+      *ngIf="formControls.email.touched && formControls.email.errors?.email"
+    >
+      Enter a valid email address
+    </span>
+    <br />
+    <input type="password" placeholder="Password" formControlName="password" />
+    <span
+      class="text-danger"
+      *ngIf="
+        (formControls.password.touched || isSubmitted) &&
+        formControls.password.errors?.required
+      "
+    >
+      Password is required
+    </span>
+
+    <p class="mt-4">
+      <input type="submit" value="Log in" />
+    </p>
+  </form>
+</div>
